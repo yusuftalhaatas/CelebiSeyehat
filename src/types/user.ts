@@ -1,10 +1,5 @@
 export type user = {
+  userName?: string;
   name: string;
-  id: string;
   puan: number;
-  tickets: Array<ticket>;
-};
-export type ticket = {
-  time: Date;
-  no: number;
 };

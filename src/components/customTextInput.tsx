@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    padding: 10,
     borderWidth: 1,
     borderRadius: 10,
     height: 50,
+    paddingLeft: 10,
   },
   inputText: {
     fontSize: 25,

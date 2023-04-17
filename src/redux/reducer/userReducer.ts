@@ -1,11 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {user, ticket} from '../../types/user';
+import {user} from '../../types/user';
 
 const initialState: user = {
+  userName: '',
   name: '',
-  id: '',
   puan: 0,
-  tickets: [],
 };
 
 const userSlice = createSlice({
@@ -15,18 +14,15 @@ const userSlice = createSlice({
     setName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
-    setId: (state, action: PayloadAction<string>) => {
-      state.id = action.payload;
-    },
     setPuan: (state, action: PayloadAction<number>) => {
       state.puan = action.payload;
     },
-    setTickets: (state, action: PayloadAction<Array<ticket>>) => {
-      state.tickets = action.payload;
+    setUserName: (state, action: PayloadAction<string>) => {
+      state.userName = action.payload;
     },
   },
 });
 
-export const {setName, setId, setPuan, setTickets} = userSlice.actions;
+export const {setName, setPuan, setUserName} = userSlice.actions;
 
 export default userSlice.reducer;
