@@ -15,12 +15,14 @@ const AgentyScreen = ({navigation}: AgentyScreenProps) => {
     navigation.navigate('UserInputScreen');
   };
 
-  const firmProcesses = () => {};
+  const firmProcesses = () => {
+    navigation.navigate('FirmsScreen');
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.tittle}>AGENTY DASHBOARD</Text>
+        <Text style={styles.tittle}>ÇELEBİ SEYAHAT ACENTASI</Text>
       </View>
       <CustomButton
         title="USER PROCESSES"

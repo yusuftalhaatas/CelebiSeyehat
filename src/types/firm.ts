@@ -1,5 +1,10 @@
 export type firm = {
   firmName: string;
-  type: 'hotel' | 'transport';
-  dicountRate: 1 | 2;
+  firmType: 'hotel' | 'transport';
+  discountRate: 1 | 2;
+  tickets?: {
+    start: string;
+    finish: string;
+    price: number;
+  };
 };

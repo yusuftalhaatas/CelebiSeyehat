@@ -1,8 +1,11 @@
 export type ticket = {
   date: string;
-  dest: string;
+  start?: string;
+  finish?: string;
   firmName: string;
-  firmType: 'hotel' | 'transport';
-  no: number;
-  userName: string;
+  firmType?: 'hotel' | 'transport';
+  no: string;
+  userName?: string;
+  name: string;
+  price?: number;
 };

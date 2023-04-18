@@ -3,14 +3,61 @@ import {StyleSheet, Text, View} from 'react-native';
 import CustomButton from '../components/customButton';
 import CustomInput from '../components/customTextInput';
 import {colors} from '../theme/colors';
+import {user} from '../types/user';
+import firestore from '@react-native-firebase/firestore';
+import {setName, setUserName} from '../redux/reducer/userReducer';
+import {useDispatch} from 'react-redux';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParams} from '../navigation/navigation';
 
-const UserAddScreen = () => {
+type UserAddScreenProps = NativeStackScreenProps<
+  RootStackParams,
+  'UserAddScreen'
+>;
+
+const UserAddScreen = ({navigation}: UserAddScreenProps) => {
   const [userName, setUserNameLocal] = useState('');
   const [name, setNameLocal] = useState('');
+  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const handleUserNameChange = (userName: string) => {
+    setUserNameLocal(userName);
+    check();
+  };
 
-  const handleUserNameChange = () => {};
-  const handleNameChange = () => {};
-  const handleUserAdd = () => {};
+  const handleNameChange = (name: string) => {
+    setNameLocal(name);
+    check();
+  };
+  const check = () => {
+    if (userName != '' && name != '') {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  };
+
+  const handleUserAdd = () => {
+    const user: user = {
+      name: name,
+      userName: userName,
+      puan: 0,
+    };
+
+    firestore()
+      .collection('users')
+      .add(user)
+      .then(() => {
+        console.log('User added!');
+      })
+      .catch(error => {
+        console.error('Error adding user:', error);
+      });
+
+    dispatch(setName(name));
+    dispatch(setUserName(userName));
+    navigation.navigate('UserInputScreen');
+  };
 
   return (
     <View>
@@ -33,7 +80,10 @@ const UserAddScreen = () => {
         value={name}
         onChangeText={handleNameChange}
       />
-      <CustomButton title="ADD" onPress={handleUserAdd}></CustomButton>
+      <CustomButton
+        title="ADD"
+        onPress={handleUserAdd}
+        disabled={disabled}></CustomButton>
     </View>
   );
 };
@@ -65,4 +115,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
 export default UserAddScreen;

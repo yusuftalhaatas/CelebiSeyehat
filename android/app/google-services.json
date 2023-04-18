@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "369669663459",
+    "project_id": "celebiseyehat-7c836",
+    "storage_bucket": "celebiseyehat-7c836.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369669663459:android:379b87243e773056b9b3d6",
+        "android_client_info": {
+          "package_name": "com.celebiseyehat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369669663459-ca3uekv7g83cj634ni0fbsi4p0kcv0ua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAso1iJPV1DR2bVsJC0uExfgH3sBHLyovc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369669663459-ca3uekv7g83cj634ni0fbsi4p0kcv0ua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

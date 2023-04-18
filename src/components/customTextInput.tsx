@@ -14,6 +14,7 @@ const CustomInput = ({placeHolder, onChangeText, value}: InputProps) => {
         placeholder={placeHolder}
         value={value}
         onChangeText={onChangeText}
+        autoCapitalize="none"
       />
     </View>
   );

@@ -1,13 +1,21 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import CustomButton from '../components/customButton';
-import FirmCard from '../components/firmCard';
+import {RootStackParams} from '../navigation/navigation';
 import {colors} from '../theme/colors';
 
-const buyTrasntportTicket = () => {};
-const hotelReserve = () => {};
+type SelectScreenProps = NativeStackScreenProps<
+  RootStackParams,
+  'SelectScreen'
+>;
+const SelectScreen = ({navigation}: SelectScreenProps) => {
+  const buyTrasntportTicket = () => {
+    navigation.navigate('TicketBuyScreen');
+  };
+  const hotelReserve = () => {};
 
-const SelectScreen = () => {
+  const userTickets = () => {};
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -17,10 +25,9 @@ const SelectScreen = () => {
         title="BUY TRANSPORT TICKET"
         onPress={buyTrasntportTicket}></CustomButton>
       <CustomButton title="HOTEL RESERVE" onPress={hotelReserve}></CustomButton>
-      <FirmCard
-        firmName="Türk Hava Yolları"
-        type="transport"
-        dicountRate={1}></FirmCard>
+      <CustomButton
+        title="USERS TICKETS/HOTELS"
+        onPress={userTickets}></CustomButton>
     </View>
   );
 };

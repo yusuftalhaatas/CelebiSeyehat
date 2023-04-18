@@ -1,9 +1,14 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import Navigation from './src/navigation/navigation';
-import LoginScreen from './src/screens/LoginScreen';
+import store from './src/redux/store/store';
 
 function App() {
-  return <Navigation />;
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
 }
 
 export default App;
