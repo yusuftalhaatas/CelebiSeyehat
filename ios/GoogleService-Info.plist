@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>369669663459-vjaft3qot7nbn19ili86qj8lmpon9hei.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.369669663459-vjaft3qot7nbn19ili86qj8lmpon9hei</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBxWq--AP-fRezbyW46i4e85v8cPrYHhTI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>369669663459</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.CelebiSeyehat</string>
+	<key>PROJECT_ID</key>
+	<string>celebiseyehat-7c836</string>
+	<key>STORAGE_BUCKET</key>
+	<string>celebiseyehat-7c836.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:369669663459:ios:e3b23bbe657903a2b9b3d6</string>
+</dict>
+</plist>
