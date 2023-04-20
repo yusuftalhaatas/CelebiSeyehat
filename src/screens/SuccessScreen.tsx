@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import CustomButton from '../components/customButton';
 import {RootStackParams} from '../navigation/navigation';
 
@@ -28,6 +28,9 @@ const SuccessScreen = ({navigation}: SuccesScreesProps) => {
           justifyContent: 'center',
         }}
         source={require('../../src/assets/success.png')}></Image>
+      <Text style={{color: 'green', fontSize: 35, marginLeft: 30}}>
+        Succsessful purchase
+      </Text>
       <CustomButton
         title="OKAY"
         onPress={() => navigation.navigate('SelectScreen')}></CustomButton>

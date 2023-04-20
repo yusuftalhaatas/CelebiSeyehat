@@ -2,13 +2,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import AgentyScreen from '../screens/AgentyScreen';
+import FirmAddScreen from '../screens/FirmAddScreen';
 import FirmsScreen from '../screens/FirmsScreen';
+import HotelPaymentScreen from '../screens/HotelPaymentScreen';
+import HotelReserveScreen from '../screens/HotelReserveScreen';
 import PayingScreen from '../screens/PayingScreen';
 import SelectScreen from '../screens/SelectScreen';
 import SuccessScreen from '../screens/SuccessScreen';
 import TicketBuyScreen from '../screens/TicketBuyScreen';
 import UserAddScreen from '../screens/UserAddScreen';
 import UserInputScreen from '../screens/UserInputScreen';
+import UserTicketsHotelsScreen from '../screens/UserTicketsHotelsScreen';
 
 export type RootStackParams = {
   LoginScreen: undefined;
@@ -20,6 +24,10 @@ export type RootStackParams = {
   FirmsScreen: undefined;
   PayingScreen: undefined;
   SuccessScreen: undefined;
+  FirmAddScreen: undefined;
+  HotelReserveScreen: undefined;
+  UserTicketsHotelsScreen: undefined;
+  HotelPaymentScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParams>();
@@ -50,6 +58,18 @@ const Navigation = () => {
         <Stack.Screen
           name="SuccessScreen"
           component={SuccessScreen}></Stack.Screen>
+        <Stack.Screen
+          name="FirmAddScreen"
+          component={FirmAddScreen}></Stack.Screen>
+        <Stack.Screen
+          name="HotelReserveScreen"
+          component={HotelReserveScreen}></Stack.Screen>
+        <Stack.Screen
+          name="UserTicketsHotelsScreen"
+          component={UserTicketsHotelsScreen}></Stack.Screen>
+        <Stack.Screen
+          name="HotelPaymentScreen"
+          component={HotelPaymentScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

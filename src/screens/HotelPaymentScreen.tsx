@@ -1,38 +1,38 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import TicketCard from '../components/ticketCard';
+import HotelCard from '../components/hotelCard';
+import {RootStackParams} from '../navigation/navigation';
 import {RootState} from '../redux/store/store';
 import firestore from '@react-native-firebase/firestore';
+import {hotel} from '../types/hotel';
 import CustomButton from '../components/customButton';
-import {ticket} from '../types/ticket';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParams} from '../navigation/navigation';
-
 const PayingTypes = [{type: 'Credit Card'}, {type: 'Cash'}, {type: 'Check'}];
 
-type PayingScreenProps = NativeStackScreenProps<
+type HotelPaymentScreenProps = NativeStackScreenProps<
   RootStackParams,
-  'PayingScreen'
+  'HotelPaymentScreen'
 >;
 
-const PayingScreen = ({navigation}: PayingScreenProps) => {
-  const name = useSelector((state: RootState) => state.user.name);
-  const date = useSelector((state: RootState) => state.ticket.date);
-  const finish = useSelector((state: RootState) => state.ticket.finish);
-  const start = useSelector((state: RootState) => state.ticket.start);
-  const firmName = useSelector((state: RootState) => state.ticket.firmName);
-  const firmType = useSelector((state: RootState) => state.ticket.firmType);
-  const no = useSelector((state: RootState) => state.ticket.no);
-  const price = useSelector((state: RootState) => state.ticket.price) as number;
+const HotelPaymentScreen = ({navigation}: HotelPaymentScreenProps) => {
   const userName = useSelector((state: RootState) => state.user.userName);
+  const name = useSelector((state: RootState) => state.user.name);
+  const date = useSelector((state: RootState) => state.hotel.date);
+  const firmName = useSelector((state: RootState) => state.hotel.firmName);
+  const firmType = useSelector((state: RootState) => state.hotel.firmType);
+  const price = useSelector((state: RootState) => state.hotel.price) as number;
+  const roomNo = useSelector((state: RootState) => state.hotel.roomNo);
+  const city = useSelector((state: RootState) => state.hotel.city);
+  const [newScore, setNewScore] = useState(0);
   const [userPuan, setUserPuan] = useState<number>(0);
   const [selected, setSelected] = useState(false);
-  const [newScore, setNewScore] = useState(0);
+
   useEffect(() => {
     getPuan();
-    setNewScore(price * 0.01);
+    setNewScore(price * 0.02);
   }, []);
+
   const getPuan = () => {
     firestore()
       .collection('users')
@@ -53,24 +53,23 @@ const PayingScreen = ({navigation}: PayingScreenProps) => {
       });
   };
 
-  const ticket: ticket = {
-    date: date,
-    start: start,
-    finish: finish,
+  const hotel: hotel = {
     firmName: firmName,
+    city: city,
     firmType: firmType,
-    no: no,
-    userName: userName,
-    name: name,
+    roomNo: roomNo,
+    date: date,
     price: price,
+    name: name,
+    userName: userName,
   };
 
-  const buyTicket = async (ticket: ticket) => {
+  const hotelReserve = async (hotel: hotel) => {
     try {
-      firestore().collection('tickets').add(ticket);
-      console.log('ticket added');
+      firestore().collection('rooms').add(hotel);
+      console.log('hotel room added');
     } catch (error) {
-      console.log('ticket did not added');
+      console.log('hotel room did not added');
     }
     try {
       const userRef = firestore()
@@ -89,17 +88,14 @@ const PayingScreen = ({navigation}: PayingScreenProps) => {
     }
     navigation.navigate('SuccessScreen');
   };
-
   return (
     <View>
-      <TicketCard
-        date={date}
-        start={start}
-        finish={finish}
+      <HotelCard
         firmName={firmName}
         name={name}
-        no={no}
-      />
+        date={date}
+        city={city}
+        roomNo={roomNo}></HotelCard>
       <View
         style={{
           flexDirection: 'row',
@@ -127,12 +123,12 @@ const PayingScreen = ({navigation}: PayingScreenProps) => {
         </View>
       </View>
       <Text style={{marginLeft: 30, color: 'green', margin: 5}}>
-        You will earn {price * 0.01}TL from this purchase
+        You will earn {price * 0.02}TL from this purchase
       </Text>
       <CustomButton
         title="BUY"
         disabled={!selected}
-        onPress={() => buyTicket(ticket)}
+        onPress={() => hotelReserve(hotel)}
       />
     </View>
   );
@@ -159,4 +155,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-export default PayingScreen;
+
+export default HotelPaymentScreen;

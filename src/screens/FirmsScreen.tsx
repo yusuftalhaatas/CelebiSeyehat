@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import CustomButton from '../components/customButton';
 import {RootStackParams} from '../navigation/navigation';
 import firestore from '@react-native-firebase/firestore'; // Firebase Firestore kütüphanesini import edin
@@ -37,15 +37,21 @@ const FirmsScreen = ({navigation}: FirmsScreenProps) => {
         renderItem={(
           {item}, // item objesine doğru tip tanımlaması yapıldı
         ) => (
-          <FirmCard
-            firmName={item.firmName}
-            firmType={item.firmType}
-            discountRate={item.discountRate}></FirmCard>
+          <TouchableOpacity>
+            <FirmCard
+              firmName={item.firmName}
+              firmType={item.firmType}
+              discountRate={item.discountRate}></FirmCard>
+          </TouchableOpacity>
         )}
         keyExtractor={item => item.firmName}
       />
       <View style={styles.buttonContainer}>
-        <CustomButton title="ADD FIRM" onPress={() => {}}></CustomButton>
+        <CustomButton
+          title="ADD FIRM"
+          onPress={() => {
+            navigation.navigate('FirmAddScreen');
+          }}></CustomButton>
       </View>
     </View>
   );

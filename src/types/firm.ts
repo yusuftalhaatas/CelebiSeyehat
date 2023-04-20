@@ -1,7 +1,7 @@
 export type firm = {
   firmName: string;
   firmType: 'hotel' | 'transport';
-  discountRate: 1 | 2;
+  discountRate: number;
   tickets?: {
     start: string;
     finish: string;

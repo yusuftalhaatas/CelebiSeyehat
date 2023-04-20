@@ -3,7 +3,7 @@ export type ticket = {
   start?: string;
   finish?: string;
   firmName: string;
-  firmType?: 'hotel' | 'transport';
+  firmType?: 'transport';
   no: string;
   userName?: string;
   name: string;

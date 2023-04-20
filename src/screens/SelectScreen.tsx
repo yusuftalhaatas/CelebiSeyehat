@@ -13,9 +13,13 @@ const SelectScreen = ({navigation}: SelectScreenProps) => {
   const buyTrasntportTicket = () => {
     navigation.navigate('TicketBuyScreen');
   };
-  const hotelReserve = () => {};
+  const hotelReserve = () => {
+    navigation.navigate('HotelReserveScreen');
+  };
 
-  const userTickets = () => {};
+  const userTickets = () => {
+    navigation.navigate('UserTicketsHotelsScreen');
+  };
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
