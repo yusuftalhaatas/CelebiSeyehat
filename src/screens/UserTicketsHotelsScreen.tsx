@@ -52,43 +52,47 @@ const UserTicketsHotelsScreen = () => {
     }
   };
   return (
-    <View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Hotels</Text>
+    <View style={{flex: 1}}>
+      <View style={{flex: 1}}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Hotels</Text>
+        </View>
+        <FlatList
+          data={hotelData}
+          renderItem={(
+            {item}, // item objesine doğru tip tanımlaması yapıldı
+          ) => (
+            <HotelCard
+              firmName={item.firmName}
+              city={item.city}
+              firmType={item.firmType}
+              roomNo={item.roomNo}
+              date={item.date}
+              name={item.name}
+            />
+          )}
+        />
       </View>
-      <FlatList
-        data={hotelData}
-        renderItem={(
-          {item}, // item objesine doğru tip tanımlaması yapıldı
-        ) => (
-          <HotelCard
-            firmName={item.firmName}
-            city={item.city}
-            firmType={item.firmType}
-            roomNo={item.roomNo}
-            date={item.date}
-            name={item.name}
-          />
-        )}
-      />
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Tickets</Text>
+      <View style={{flex: 1}}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Tickets</Text>
+        </View>
+        <FlatList
+          data={ticketData}
+          renderItem={(
+            {item}, // item objesine doğru tip tanımlaması yapıldı
+          ) => (
+            <TicketCard
+              date={item.date}
+              start={item.start}
+              finish={item.finish}
+              firmName={item.firmName}
+              no={item.no}
+              name={item.name}
+            />
+          )}
+        />
       </View>
-      <FlatList
-        data={ticketData}
-        renderItem={(
-          {item}, // item objesine doğru tip tanımlaması yapıldı
-        ) => (
-          <TicketCard
-            date={item.date}
-            start={item.start}
-            finish={item.finish}
-            firmName={item.firmName}
-            no={item.no}
-            name={item.name}
-          />
-        )}
-      />
     </View>
   );
 };
