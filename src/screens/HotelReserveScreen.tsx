@@ -27,6 +27,7 @@ type HotelReserveScreenProps = NativeStackScreenProps<
 >;
 const HotelReserveScreen = ({navigation}: HotelReserveScreenProps) => {
   const [date, setDateLocal] = useState(new Date());
+  const [stringDate, setStringDate] = useState('');
   const minumumDate = new Date('2023-04-20');
   const maximumDate = new Date('2024-12-12');
   const dispatch = useDispatch();
@@ -84,28 +85,42 @@ const HotelReserveScreen = ({navigation}: HotelReserveScreenProps) => {
       .get()
       .then(querySnapshot => {
         if (!querySnapshot.empty) {
-          // Belge bulunursa, "tickets" koleksiyonunun referansını al
           const ticketsCollectionRef = firestore()
             .collection('firms')
             .doc(querySnapshot.docs[0].id)
             .collection('available');
-          // "tickets" koleksiyonundaki tüm belgeleri getir
+
+          let hotelRoomData: HotelRoomData[] = [];
+
           ticketsCollectionRef
+            .where('date', '==', stringDate)
             .get()
             .then(ticketsSnapshot => {
-              const hotelRoomData: HotelRoomData[] = [];
-              // "tickets" koleksiyonundan belgeleri döngüye al
               ticketsSnapshot.forEach(hotelDoc => {
-                // Belgenin "start", "finish" ve "price" alanlarındaki verilere ulaşarak obje olarak ekleyin
-                const hotelRooms = hotelDoc.data() as HotelRoomData;
-                hotelRoomData.push(hotelRooms);
+                hotelRoomData = ticketsSnapshot.docs.map(
+                  hotelDoc => hotelDoc.data() as HotelRoomData,
+                );
               });
-              // State'i güncelle
               setRooms(hotelRoomData);
             })
             .catch(error => {
               console.error('Hata:', error);
             });
+          if (hotelRoomData.length == 0) {
+            ticketsCollectionRef
+              .get()
+              .then(ticketsSnapshot => {
+                ticketsSnapshot.forEach(hotelDoc => {
+                  hotelRoomData = ticketsSnapshot.docs.map(
+                    hotelDoc => hotelDoc.data() as HotelRoomData,
+                  );
+                });
+                setRooms(hotelRoomData);
+              })
+              .catch(error => {
+                console.error('Hata:', error);
+              });
+          }
         } else {
           console.log('Belge bulunamadı.');
         }
@@ -119,6 +134,7 @@ const HotelReserveScreen = ({navigation}: HotelReserveScreenProps) => {
     setDateLocal(date);
     const newDate = date.toLocaleDateString();
     dispatch(setDate(newDate));
+    setStringDate(newDate);
     console.log(date.toLocaleDateString());
   };
   return (
