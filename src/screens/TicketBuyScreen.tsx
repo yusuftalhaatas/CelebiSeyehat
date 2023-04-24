@@ -288,6 +288,7 @@ const styles = StyleSheet.create({
     margin: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    backgroundColor: colors.themeBlue,
   },
 
   firmName: {
