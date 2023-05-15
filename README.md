@@ -1,4 +1,5 @@
 This project developed for the BLM3722 course.<br>
+Celebi Seyahat is hotel reserve and buying transport ticket system.<br>
 Tech Stack<br>
 - React Native<br>
 - Typescript<br>
