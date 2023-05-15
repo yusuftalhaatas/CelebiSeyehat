@@ -5,7 +5,7 @@ import CustomButton from '../components/customButton';
 import {RootStackParams} from '../navigation/navigation';
 import {colors} from '../theme/colors';
 
-type AgentyScreenProps = NativeStackScreenProps<
+export type AgentyScreenProps = NativeStackScreenProps<
   RootStackParams,
   'AgentyScreen'
 >;

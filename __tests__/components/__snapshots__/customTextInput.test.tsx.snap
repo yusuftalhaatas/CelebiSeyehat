@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/CustomInput renders correctly and responds to text changes 1`] = `
+<View
+  style={
+    {
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "height": 50,
+      "justifyContent": "flex-start",
+      "marginHorizontal": 30,
+      "marginVertical": 10,
+      "paddingLeft": 10,
+    }
+  }
+>
+  <TextInput
+    autoCapitalize="none"
+    onChangeText={[MockFunction]}
+    placeholder="Test Input"
+    value=""
+  />
+</View>
+`;

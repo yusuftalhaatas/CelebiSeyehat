@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/FirmCard renders correctly 1`] = `
+<View
+  style={
+    {
+      "borderColor": "black",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "margin": 15,
+      "padding": 10,
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        {
+          "fontSize": 25,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Test Firm
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "fontSize": 20,
+        }
+      }
+    >
+      Type:
+      transport
+    </Text>
+    <Text
+      style={
+        {
+          "fontSize": 20,
+        }
+      }
+    >
+      Discount:%
+      20
+    </Text>
+  </View>
+</View>
+`;

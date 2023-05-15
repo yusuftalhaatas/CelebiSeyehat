@@ -5,7 +5,7 @@ import CustomButton from '../components/customButton';
 import {RootStackParams} from '../navigation/navigation';
 import {colors} from '../theme/colors';
 
-type SelectScreenProps = NativeStackScreenProps<
+export type SelectScreenProps = NativeStackScreenProps<
   RootStackParams,
   'SelectScreen'
 >;
