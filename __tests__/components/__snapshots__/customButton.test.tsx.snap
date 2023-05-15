@@ -10,6 +10,7 @@ exports[`components/CustomButton renders correctly and responds to press events 
         "disabled": undefined,
         "expanded": undefined,
         "selected": undefined,
+        
       }
     }
     accessibilityValue={
